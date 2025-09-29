@@ -1,0 +1,119 @@
+
+import nodemailer from "nodemailer"
+
+import dotenv from "dotenv";
+
+
+dotenv.config();
+
+const Transport=nodemailer.createTransport({
+    service:"gmail",
+    auth:{
+        user:"omar1chaoukat@gmail.com",
+        pass:process.env.EMAILPASSWORDAPP
+    }
+
+})
+
+
+
+function SendEmail(destinataire){
+    const Options={
+        from:"omar1chaoukat@gmail.com",
+        to:destinataire,
+        subject:"Email Test with Node js",
+        html:`<!-- save as email-template.html or use as string in your code -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Creative Email</title>
+  <style>
+    /* Few clients will read this — keep critical styles inline.
+       This media query helps mobile (most mobile clients support it). */
+    @media only screen and (max-width:600px) {
+      .container { width:100% !important; padding:16px !important; }
+      .hero { font-size:22px !important; }
+      .btn { display:block !important; width:100% !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#f4f6f8;font-family:Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:24px 0;">
+    <tr>
+      <td align="center">
+        <!-- Main container -->
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(14,30,37,0.08);">
+          <!-- Header / Image -->
+          <tr>
+            <td style="padding:0;">
+              <!-- Use external URL or embedded CID: src="cid:hero-image" -->
+              <img alt="Hero image" src="https://wpengine.com/wp-content/uploads/2021/05/optimize-images-1024x681.jpg" width="600" height="200px" style="display:block;width:100%;height:auto;border:0;outline:none;text-decoration:none;">
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td style="padding:28px 36px 20px;">
+              <!-- Preheader (hidden in email preview) -->
+              <div style="display:none;max-height:0;overflow:hidden;color:#ffffff;line-height:1px;font-size:1px;">Résumé rapide — remplace ceci par ta prévisualisation.</div>
+
+              <!-- Title -->
+              <h1 class="hero" style="margin:0 0 12px;font-size:28px;line-height:1.15;color:#0f1724;font-weight:700;">
+                Titre principal créatif
+              </h1>
+
+              <!-- Paragraph -->
+              <p style="margin:0 0 18px;color:#4b5563;font-size:16px;line-height:1.6;">
+                Bonjour, voici un exemple d’email HTML au style soigné. Utilise ce template pour annoncer une nouveauté, partager une offre ou diriger l’utilisateur vers une action importante. Le design est responsive et optimisé pour la lecture sur mobile.
+              </p>
+
+              <!-- Button -->
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:18px 0;">
+                <tr>
+                  <td align="left">
+                    <a href="https://gomycode.com/ma/fr/" class="btn" style="background:#2563eb;border-radius:8px;padding:12px 20px;display:inline-block;text-decoration:none;color:#ffffff;font-weight:600;font-size:16px;">
+                      Voir l'offre
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Small note -->
+              <p style="margin:0;color:#9ca3af;font-size:13px;line-height:1.4;">
+                Si le bouton ne fonctionne pas, copie-colle ce lien dans votre navigateur : https://example.com/your-link
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:20px 36px;background:#fafafa;border-top:1px solid #eef2f7;color:#9aa4b2;font-size:13px;">
+              <div style="margin-bottom:6px;">© 2025 Ton Entreprise — Tous droits réservés</div>
+              <div>123 Rue Exemple, Casablanca</div>
+            </td>
+          </tr>
+        </table>
+        <!-- /container -->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`
+
+    }
+
+
+
+
+    Transport.sendMail(Options).then(()=>console.log("email sent "))
+    .catch(()=>console.log("Erreur "))
+
+    
+}
+
+
+
+export {SendEmail};

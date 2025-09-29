@@ -2,9 +2,11 @@ import express from "express";
 import cors from "cors";
 import { DeleteStudent,findAllStudent,findByStudentNumber,insertStudent,updateName } from "./dbConfig.js";
 
+import dotenv from "dotenv";
+import { SendEmail } from "./MailSender.js";
 
 
-
+dotenv.config();
 
 const Server=express();
 
@@ -110,6 +112,21 @@ Server.delete("/students/:studentNumber",async (req,res)=>{
 
 
 
-Server.listen(7000,()=>{
-    console.log("the server is running on http://localhost:7000")
+// Get sendmail
+
+
+Server.post("/sendmail",(req,res)=>{
+
+    const {email}=req.body;
+  SendEmail(email);
+  res.status(200).json({
+    msg:"Email envoyé avec succés"
+  })
+
+
+})
+
+
+Server.listen(process.env.PORTNUMBER,()=>{
+    console.log("the server is running on http://localhost:"+process.env.PORTNUMBER)
 })

@@ -3,8 +3,8 @@
 
 // import 
 
-const { log } = require("console");
-const fs=require("fs");
+
+import fs from "fs";
 
 
 

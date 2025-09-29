@@ -1,8 +1,8 @@
 // Importer le module Http
 
-const http=require("http"); // common js method 
+// const http=require("http"); // common js method 
 
-// import http from "http"   // module js method 
+import http from "http"   // module js method 
 
 
 

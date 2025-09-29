@@ -1,0 +1,30 @@
+Id : 1
+nom: Salim alaoui
+age: 33
+email: salim@gmail.com
+password: Salim123
+---------
+Id : 2
+nom: Sara salimi
+age: 23
+email: sara@gmail.com
+password: sara123
+---------
+Id : 3
+nom: Karim Karimi
+age: 23
+email: karim@gmail.com
+password: karim123
+---------
+Id : 4
+nom:  Omar salim
+age: 27
+email: Omar@gmail.com
+password: Omar123
+---------
+Id : 5
+nom:  Hassan
+age: 22
+email: Hassan@gmail.com
+password: Hassan
+---------
